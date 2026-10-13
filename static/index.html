@@ -1,0 +1,403 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#090e1c" />
+    <title>Sarah — практика английского</title>
+    <link
+      rel="icon"
+      href="/static/sarah.svg"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400..700;1,9..40,400..700&family=Geist:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/static/nova-tokens.css" />
+    <link rel="stylesheet" href="/static/studio.css" />
+    <script src="/static/studio.js" defer></script>
+    <script src="/static/learning.js" defer></script>
+  </head>
+  <body data-phase="idle">
+    <div class="night-sky" aria-hidden="true"><i></i><i></i><i></i></div>
+    <svg class="sprite" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+      <symbol id="i-wave" viewBox="0 0 24 24">
+        <path d="M4 9v6m4-11v16m4-13v10m4-11v12m4-8v4" />
+      </symbol>
+      <symbol id="i-arrow" viewBox="0 0 24 24">
+        <path d="M5 12h14m-6-6 6 6-6 6" />
+      </symbol>
+      <symbol id="i-mic" viewBox="0 0 24 24">
+        <rect x="9" y="3" width="6" height="12" rx="3" />
+        <path d="M5 10v2a7 7 0 0 0 14 0v-2m-7 9v3m-4 0h8" />
+      </symbol>
+      <symbol id="i-book" viewBox="0 0 24 24">
+        <path
+          d="M12 5v16M3 3h5a4 4 0 0 1 4 3 4 4 0 0 1 4-3h5v15h-5a4 4 0 0 0-4 3 4 4 0 0 0-4-3H3z"
+        />
+      </symbol>
+      <symbol id="i-spark" viewBox="0 0 24 24">
+        <path d="m12 3 2.5 6.5L21 12l-6.5 2.5L12 21l-2.5-6.5L3 12l6.5-2.5z" />
+      </symbol>
+      <symbol id="i-keyboard" viewBox="0 0 24 24">
+        <rect x="2" y="5" width="20" height="14" rx="3" />
+        <path
+          d="M6 9h.01M10 9h.01M14 9h.01M18 9h.01M6 12h.01M10 12h.01M14 12h.01M18 12h.01M7 16h10"
+        />
+      </symbol>
+      <symbol id="i-download" viewBox="0 0 24 24">
+        <path d="M12 3v12m-5-5 5 5 5-5M4 16v5h16v-5" />
+      </symbol>
+      <symbol id="i-check" viewBox="0 0 24 24">
+        <path d="m5 12 4 4L19 6" />
+      </symbol>
+      <symbol id="i-close" viewBox="0 0 24 24">
+        <path d="m6 6 12 12M6 18 18 6" />
+      </symbol>
+      <symbol id="i-shield" viewBox="0 0 24 24">
+        <path d="m12 3 8 3v6c0 5-8 9-8 9s-8-4-8-9V6zM8 12l3 3 5-6" />
+      </symbol>
+    </svg>
+    <a class="skip" href="#studio">К разговору</a>
+    <header class="topbar">
+      <a class="brand" href="/" aria-label="Sarah — главная"
+        ><span class="brand-mark"
+          ><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M22 9c-2-4-12-3-12 2 0 5 12 4 12 10 0 5-10 7-14 2"/><ellipse cx="16" cy="16" rx="15" ry="7" transform="rotate(-40 16 16)" class="brand-orbit"/><circle cx="26" cy="7" r="2" class="brand-star"/></svg></span
+        >Sarah</a
+      >
+      <div class="top-actions">
+        <button class="button subtle learning-nav" id="learningBtn"><svg><use href="#i-book" /></svg><span>Мои занятия</span></button>
+        <span class="language-pill"
+          >EN / RU <span id="levelBadge">B1+</span></span
+        ><button
+          class="button subtle"
+          id="transcriptBtn"
+          aria-label="Открыть диалог"
+        >
+          <svg><use href="#i-book" /></svg></button
+        ><button class="button subtle" id="settingsBtn">Настройки</button>
+      </div>
+    </header>
+    <main id="studio">
+      <h1 class="sr-only">Разговор с Sarah</h1>
+      <div id="notice" class="notice" role="status" hidden></div>
+      <div class="workspace">
+        <div class="conversation-column">
+          <div class="session-meta">
+            <span class="connection" id="connection"
+              ><i></i><span id="connectionText">Готова слушать</span></span
+            ><span id="timer">00:00</span>
+          </div>
+          <section class="voice-room" aria-labelledby="roomTitle">
+            <div class="voice-art" id="voiceArt" aria-hidden="true">
+              <div class="orbit orbit-one"></div>
+              <div class="orbit orbit-two"></div>
+              <div class="orb">
+                <div class="orb-shine"></div>
+                <div class="orb-wave">
+                  <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i
+                  ><i></i>
+                </div>
+              </div>
+              <span class="orb-satellite"></span>
+            </div>
+            <h2 id="roomTitle">Поговорим?</h2>
+            <p id="roomDescription">На английском. С поддержкой на русском.</p>
+            <span id="roomState" class="sr-only"><i></i>Готова слушать</span>
+            <div class="sarah-preview" id="sarahPreview" hidden>
+              <span class="field-label">Sarah</span>
+              <p id="liveReply" aria-live="polite" aria-atomic="true" tabindex="0"></p>
+            </div>
+            <div class="speech-preview" id="speechPreview">
+              <span class="field-label" id="speechLabel">Ты</span>
+              <p id="liveSpeech" aria-live="polite">
+                Здесь появится то, что ты говоришь.
+              </p>
+            </div>
+            <div class="mic-signal" id="micSignal">
+              <span class="signal-bars"
+                ><i></i><i></i><i></i><i></i><i></i></span
+              ><span id="micLabel">Микрофон выключен</span>
+            </div>
+          </section>
+          <section class="session-controls" aria-label="Session controls">
+            <div class="call-controls">
+              <button class="button primary start-button" id="startBtn">
+                <svg><use href="#i-mic" /></svg
+                ><span>Начать разговор</span></button
+              ><button class="button primary" id="commitBtn" disabled hidden>
+                Отправить <svg><use href="#i-arrow" /></svg></button
+              ><button
+                class="button outline"
+                id="muteBtn"
+                aria-pressed="false"
+                aria-label="Микрофон"
+                hidden
+              >
+                <svg><use href="#i-mic" /></svg
+                ><span class="sr-only">Mute</span></button
+              ><button class="button outline" id="interruptBtn" hidden>
+                Перебить</button
+              ><button class="button subtle" id="endBtn" hidden>
+                Завершить
+              </button>
+            </div>
+            <p class="control-help" id="controlHelp">
+              Можно думать и делать паузы. Sarah дождётся «Отправить».
+            </p>
+            <button
+              class="text-button keyboard-toggle"
+              id="modeBtn"
+              aria-pressed="false"
+            >
+              <svg><use href="#i-keyboard" /></svg><span>Написать текстом</span>
+            </button>
+          </section>
+          <form id="textForm" class="text-composer" hidden>
+            <label class="sr-only" for="textInput">Message to Sarah</label
+            ><input
+              id="textInput"
+              placeholder="На английском или по-русски…"
+              maxlength="4000"
+              autocomplete="off"
+              disabled
+            /><button
+              class="send-button"
+              id="sendBtn"
+              aria-label="Send message"
+              disabled
+            >
+              <svg><use href="#i-arrow" /></svg>
+            </button>
+          </form>
+        </div>
+        <aside class="coaching-panel" aria-labelledby="coachingTitle">
+          <div class="coaching-heading">
+            <span class="coach-icon"
+              ><svg><use href="#i-spark" /></svg
+            ></span>
+            <div>
+              <h2 id="coachingTitle">Подсказки</h2>
+              <p>По твоим репликам</p>
+            </div>
+            <span class="live-badge" id="feedbackBadge">LIVE</span>
+          </div>
+          <div
+            class="feedback-tabs"
+            role="tablist"
+            aria-label="Coaching feedback"
+          >
+            <button
+              role="tab"
+              id="correctionsTab"
+              aria-controls="correctionsPanel"
+              aria-selected="true"
+              data-tab="corrections"
+            >
+              Исправления <span id="correctionCount">0</span></button
+            ><button
+              role="tab"
+              id="upgradesTab"
+              aria-controls="upgradesPanel"
+              aria-selected="false"
+              tabindex="-1"
+              data-tab="upgrades"
+            >
+              Как сказать <span id="upgradeCount">0</span>
+            </button>
+          </div>
+          <div class="feedback-content">
+            <div
+              id="correctionsPanel"
+              role="tabpanel"
+              aria-labelledby="correctionsTab"
+            >
+              <div class="feedback-empty" id="correctionsEmpty">
+                <h3>Здесь появятся подсказки.</h3>
+                <p>Отправь первую реплику — Sarah поможет с формулировками.</p>
+              </div>
+              <div id="correctionsList"></div>
+            </div>
+            <div
+              id="upgradesPanel"
+              role="tabpanel"
+              aria-labelledby="upgradesTab"
+              hidden
+            >
+              <div class="feedback-empty" id="upgradesEmpty">
+                <h3>Другой способ сказать.</h3>
+                <p>
+                  Варианты формулировок для твоего уровня. Это предложения, а не
+                  ошибки.
+                </p>
+              </div>
+              <div id="upgradesList"></div>
+            </div>
+          </div>
+          <p class="feedback-status" id="feedbackStatus" role="status"></p>
+          <div class="takeaway-section">
+            <span class="field-label"
+              ><svg><use href="#i-book" /></svg> Запомнить</span
+            >
+            <div id="takeaways">
+              <p class="takeaway-placeholder">Полезные фразы из разговора.</p>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </main>
+    <dialog id="settingsDialog">
+      <div class="dialog-heading">
+        <h2>Настройки разговора</h2>
+        <button
+          class="icon-button"
+          data-close="settingsDialog"
+          aria-label="Закрыть настройки"
+        >
+          <svg><use href="#i-close" /></svg>
+        </button>
+      </div>
+      <label class="setting-label" for="levelSelect">Моя цель</label
+      ><select id="levelSelect">
+        <option value="A2">A2 — простые фразы</option>
+        <option value="B1">B1 — повседневное общение</option>
+        <option value="B1+" selected>B1+ — говорить увереннее</option>
+        <option value="B2">B2 — подробные объяснения</option>
+        <option value="C1">C1 — нюансы и точность</option>
+      </select>
+      <p class="dialog-note" id="levelDescription">
+        Понятные слова, короткие ответы, без сложного делового жаргона.
+      </p>
+      <label class="setting-label">Тема</label>
+      <div class="focus-options" role="group" aria-label="Practice focus">
+        <button
+          class="focus-chip selected"
+          data-focus="Free conversation"
+          aria-pressed="true"
+        >
+          Свободный разговор</button
+        ><button
+          class="focus-chip"
+          data-focus="Present your design"
+          aria-pressed="false"
+        >
+          Обсудить дизайн</button
+        ><button
+          class="focus-chip"
+          data-focus="Handle client pushback"
+          aria-pressed="false"
+        >
+          Разговор с клиентом
+        </button>
+      </div>
+      <label class="setting-label shield"
+        ><input type="checkbox" id="echoShield" checked />Я слушаю через
+        колонки</label
+      >
+      <p class="dialog-note">
+        Более осторожное определение голоса, чтобы Sarah не перебивала сама
+        себя. В наушниках выключи.
+      </p>
+      <p class="dialog-note">
+        Английский и русский распознаются автоматически. Смена уровня и темы
+        доступна между сессиями.
+      </p>
+      <button class="button outline" id="memoryBtn">
+        <svg><use href="#i-book" /></svg>Мои заметки
+      </button>
+    </dialog>
+    <dialog id="transcriptDialog">
+      <div class="dialog-heading">
+        <h2>Диалог</h2>
+        <button
+          class="icon-button"
+          data-close="transcriptDialog"
+          aria-label="Закрыть диалог"
+        >
+          <svg><use href="#i-close" /></svg>
+        </button>
+      </div>
+      <div
+        class="transcript"
+        id="transcript"
+        role="log"
+        aria-label="Conversation transcript"
+      >
+        <p id="transcriptEmpty">Разговор ещё не начался.</p>
+      </div>
+      <button class="button outline" id="downloadTranscript" disabled>
+        <svg><use href="#i-download" /></svg>Скачать диалог
+      </button>
+    </dialog>
+    <dialog id="memoryDialog" class="learning-dialog" aria-labelledby="learningTitle">
+      <header class="learning-header">
+        <div><h2 id="learningTitle">Мои занятия</h2><p id="memoryCount" role="status">Загружаю записи из Obsidian…</p></div>
+        <button class="icon-button" data-close="memoryDialog" aria-label="Закрыть мои занятия"><svg><use href="#i-close" /></svg></button>
+      </header>
+      <div class="learning-toolbar">
+        <div class="view-switch" role="group" aria-label="Раздел заметок">
+          <button id="lessonsViewBtn" aria-pressed="true">Занятия</button>
+          <button id="reviewViewBtn" aria-pressed="false">Повторение</button>
+          <button id="trashViewBtn" aria-pressed="false">Корзина</button>
+        </div>
+        <button class="text-button" id="refreshLessons">Обновить</button>
+      </div>
+      <div id="learningStatus" class="learning-status" role="status"></div>
+      <div class="learning-layout" id="lessonsView">
+        <section class="lesson-sidebar" aria-label="Архив занятий">
+          <label class="sr-only" for="lessonSearch">Поиск по занятиям</label>
+          <input id="lessonSearch" type="search" placeholder="Найти тему или фразу…" autocomplete="off" />
+          <div id="lessonList" class="lesson-list"></div>
+        </section>
+        <section class="lesson-reader" id="lessonReader" aria-label="Заметка занятия">
+          <div class="reader-toolbar">
+            <button class="text-button" id="backToLessons">← К списку</button>
+            <span id="lessonDate"></span>
+            <button class="text-button" id="downloadLesson" disabled><svg><use href="#i-download" /></svg>Скачать .md</button>
+            <button class="text-button danger-text" id="deleteLesson" disabled>Удалить занятие</button>
+          </div>
+          <div id="deletePrompt" class="delete-prompt" hidden>
+            <p>Переместить это занятие в корзину? Заметка исчезнет из архива, повторения и памяти Sarah для следующих разговоров. Её можно восстановить.</p>
+            <div><button id="confirmDeleteLesson" class="button outline danger-text">В корзину</button><button id="cancelDeleteLesson" class="button subtle">Отмена</button></div>
+          </div>
+          <article id="lessonContent" class="note-content" tabindex="0"><p class="reader-empty">Выбери занятие, чтобы перечитать разговор и разобрать ошибки.</p></article>
+        </section>
+      </div>
+      <section id="reviewView" class="review-view" hidden>
+        <p class="review-intro">Попробуй исправить фразу вслух, затем открой ответ. Здесь исправления и рекомендации из сохранённых занятий.</p>
+        <div id="reviewCards"></div>
+      </section>
+      <section id="trashView" class="review-view" hidden>
+        <p class="review-intro">Удалённые занятия хранятся в отдельной папке Obsidian и не используются Sarah. Восстановить их можно в любой момент.</p>
+        <div id="trashList"></div>
+      </section>
+      <footer class="learning-footer"><span class="storage-dot"></span>Записи из Obsidian <span>Sarah учитывает последние 4 занятия. Здесь доступен весь архив.</span></footer>
+    </dialog>
+    <dialog id="summaryDialog">
+      <div class="dialog-heading">
+        <div>
+          <p class="eyebrow">Занятие завершено</p>
+          <h2>Сохраним главное.</h2>
+        </div>
+        <button
+          class="icon-button"
+          data-close="summaryDialog"
+          aria-label="Закрыть итог занятия"
+        >
+          <svg><use href="#i-close" /></svg>
+        </button>
+      </div>
+      <p id="saveStatus" class="lede"></p>
+      <article id="summaryContent" class="note-content"></article>
+      <div class="dialog-actions">
+        <button class="button primary" id="downloadNotes">
+          <svg><use href="#i-download" /></svg>Скачать заметку</button
+        ><button class="button outline" data-close="summaryDialog">
+          К разговору
+        </button>
+      </div>
+    </dialog>
+  </body>
+</html>

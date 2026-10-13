@@ -1,0 +1,68 @@
+/* NovaOS source tokens, copied unchanged from the supplied kit. */
+:root {
+  /* text */
+  --nova-text-primary: #161816;
+  --nova-text-secondary: #757677;
+  --nova-text-muted: #a7a9ac;
+  --nova-text-inverse: #ffffff;
+
+  /* surface / background */
+  --nova-surface-primary: #ffffff;
+  --nova-surface-secondary: #f3f4f2;
+  --nova-background-primary: #ffffff;
+  --nova-background-secondary: #f7f7f7;
+
+  /* accent */
+  --nova-accent-primary: #0082de;
+  --nova-accent-secondary: #63beff;
+  --nova-accent-soft: #161816;
+  --nova-accent-tint: #ecf7ff;
+
+  /* dark sections (Industries) */
+  --nova-surface-inverse: #161816;
+  --nova-surface-inverse-raised: #2d2f2d;
+  --nova-border-inverse: rgba(255, 255, 255, 0.1);
+  --nova-text-inverse-secondary: rgba(255, 255, 255, 0.6);
+
+  /* status */
+  --nova-status-error: #d92d20;
+
+  /* line */
+  --nova-border-default: #e4e7e2;
+
+  /* radius */
+  --nova-radius-12: 12px;
+  --nova-radius-16: 16px;
+  --nova-radius-24: 24px;
+  --nova-radius-999: 999px;
+
+  /* space */
+  --nova-space-4: 4px;
+  --nova-space-8: 8px;
+  --nova-space-12: 12px;
+  --nova-space-16: 16px;
+  --nova-space-20: 20px;
+  --nova-space-24: 24px;
+  --nova-space-32: 32px;
+  --nova-space-40: 40px;
+  --nova-space-48: 48px;
+  --nova-space-64: 64px;
+
+  /* layout: design widths are 390 / 834 / 1440 with 20 / 40 / 100 gutters */
+  --nova-container: 1240px;
+
+  /* motion */
+  --nova-ease: cubic-bezier(0.22, 0.61, 0.36, 1);
+  --nova-ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+
+  /* entrance stagger (Stagger / Reveal / word-by-word headings) */
+  --nova-ease-reveal: cubic-bezier(0.22, 1, 0.36, 1);
+  --nova-dur-reveal: 900ms;
+  --nova-stagger: 80ms;
+  --nova-rise: 24px;
+  --nova-dur-word: 700ms;
+  --nova-word-step: 35ms;
+  --nova-dur-fast: 150ms;
+  --nova-dur: 260ms;
+  --nova-dur-slow: 520ms;
+}
